@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.SHGroup.DSMWiki.MainActivity">
+    <WebView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wv"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/buttonBack">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:text="◀"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:background="@color/buttonBack"
+            android:textColor="@color/btntxt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/front"
+            android:text="▶"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:background="@color/buttonBack"
+            android:textColor="@color/btntxt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home"
+            android:text="⌂"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:background="@color/buttonBack"
+            android:textColor="@color/btntxt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/favorite"
+            android:text="★"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:background="@color/buttonBack"
+            android:textColor="@color/btntxt"/>
+
+    </LinearLayout>
+</LinearLayout>
