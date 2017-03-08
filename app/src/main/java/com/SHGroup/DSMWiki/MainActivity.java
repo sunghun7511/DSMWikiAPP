@@ -17,6 +17,7 @@ import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,7 +127,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Popu
             setFavorite(favs);
 
             //즐겨찾기의 별 모양 변경
-            favorite.setText(favs.contains(wv.getUrl())?"☆":"★");
+            favorite.setText(favs.contains(wv.getUrl())?"★":"☆");
         }else if(v.getId() == R.id.more){
             pm.show(); //팝업메뉴 보여주기.
         }else{
@@ -144,18 +145,24 @@ public class MainActivity extends Activity implements View.OnClickListener, Popu
 
             final List<String> lst = getFavorits();
 
+            final List<String> c_lst = new ArrayList<String>();
+
             for(int i = 0 ; i  < lst.size() ; i ++ ){
                 String n = lst.get(i);
 
+                if(n.contains("index.php?title=")){
+                    n = URLDecoder.decode(n.substring(n.indexOf("index.php?title=" + 16, n.length())));
+                }
 
-
-                lst.set(i, n);
+                c_lst.add(n);
             }
 
-            b.setItems(lst.toArray(new String[]{}), new DialogInterface.OnClickListener() {
+            b.setItems(c_lst.toArray(new String[]{}), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                    if(which >= 0 && which < lst.size()) {
+                        wv.loadUrl(lst.get(which));
+                    }
                 }
             });
 
