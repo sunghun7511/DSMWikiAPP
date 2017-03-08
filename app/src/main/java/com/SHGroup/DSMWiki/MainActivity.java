@@ -1,9 +1,12 @@
 package com.SHGroup.DSMWiki;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -135,9 +138,37 @@ public class MainActivity extends Activity implements View.OnClickListener, Popu
     @Override
     public boolean onMenuItemClick(MenuItem item){
         if(item.getItemId() == FAVORITES){
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
 
+            b.setPositiveButton("취소", null);
+
+            final List<String> lst = getFavorits();
+
+            for(int i = 0 ; i  < lst.size() ; i ++ ){
+                String n = lst.get(i);
+
+
+
+                lst.set(i, n);
+            }
+
+            b.setItems(lst.toArray(new String[]{}), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            b.show();
         }else if(item.getItemId() == DEVELOPERS){
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
 
+            b.setMessage("Developer\n\nIcon Design : 10120 차태민\nDevelopment : 10105 김성훈\n메일 : sunghun7511@naver.com\n연락처 : "
+                    + Html.fromHtml("<a href=\"tel:010-3424-4823\">010-3424-4823</a>"));
+
+            b.setPositiveButton("확인", null);
+
+            b.show();
         }else{
             //데-헷
             Toast.makeText(this, "엥 이거 어케 했냐 ㄷㄷ;", Toast.LENGTH_LONG).show();
