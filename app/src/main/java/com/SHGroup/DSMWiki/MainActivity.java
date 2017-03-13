@@ -5,16 +5,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import java.net.URLDecoder;
@@ -24,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
-    public final String url = "http://wiki.dsmhs.xyz/"; //위키 주소
+    public final String url = "http://dsmwiki.kr/"; //위키 주소
     public WebView wv;
     public Button back, front, home, favorite, more;
     private PopupMenu pm;
@@ -150,8 +147,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Popu
             for(int i = 0 ; i  < lst.size() ; i ++ ){
                 String n = lst.get(i);
 
-                if(n.contains("index.php?title=")){
-                    n = URLDecoder.decode(n.substring(n.indexOf("index.php?title=" + 16, n.length())));
+                if(n.contains("index.php/")){
+                    n = URLDecoder.decode(n.substring(n.indexOf("index.php/" + 16, n.length())));
                 }
 
                 c_lst.add(n);
